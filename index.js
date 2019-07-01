@@ -185,8 +185,10 @@ module.exports = function footnote_plugin(md) {
         start = state.pos;
 
     if (start + 2 >= max) { return false; }
-    if (state.src.charCodeAt(start) !== 0x5E/* ^ */) { return false; }
-    if (state.src.charCodeAt(start + 1) !== 0x5B/* [ */) { return false; }
+
+    if (state.src.charCodeAt(start) !== 0x5B/* [ */) { return false; }
+
+    if (state.src.charCodeAt(start + 1) !== 0x5E/* ^ */) { return false; }
 
     labelStart = start + 2;
     labelEnd = parseLinkLabel(state, start + 1);
